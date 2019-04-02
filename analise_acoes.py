@@ -162,11 +162,7 @@ for acao in papeis:
     cria_situacao()
     
     
-    
-    
-    # TEnho que criar as colunas mm9, mm21, bb_sup e bb_inf
-    # Adicionar as mm9, mm21, bb_sup e bb_inf
-        
+    #Criando as médias móveis
     def cria_mm9():
         lista = []
         lista.clear()
@@ -195,39 +191,11 @@ for acao in papeis:
         base['mm21'] = lista
     cria_mm21()
     
-    def cria_bb_sup():
-        lista = []
-        lista.clear()
-        ini = 0
-        fim = 21
-        for i in range(0, 21):
-            lista.append(base.iloc[i, 4])
-        for i in range(21, len(base.Close)):
-            lista.append(base.iloc[ini:fim, 4].mean() + 2*(base.iloc[ini:fim, 4].std()))
-            ini += 1
-            fim += 1
-        base['bb_sup'] = lista
-    cria_bb_sup()
-    
-    def cria_bb_inf():
-        lista = []
-        lista.clear()
-        ini = 0
-        fim = 21
-        for i in range(0, 21):
-            lista.append(base.iloc[i, 4])
-        for i in range(21, len(base.Close)):
-            lista.append(base.iloc[ini:fim, 4].mean() - 2*(base.iloc[ini:fim, 4].std()))
-            ini += 1
-            fim += 1
-        base['bb_inf'] = lista
-    cria_bb_inf()
     
     p1 = base.iloc[-9:,4].mean()
     p2 = base.iloc[-21:,4].mean()
     
-    
-    
+        
     def cria_situacao2():
         lista = []
         for i in range(len(base.Close)):
@@ -240,9 +208,7 @@ for acao in papeis:
     
     
     X = base.iloc[:, [9, 10]].values
-    #y = base.iloc[:, 2].values
     y2 = base.iloc[:,-1].values
-    #y2 = encoder.fit_transform(y2)
     
     #Tratando as datas
     # resolver isso aqui
@@ -255,8 +221,7 @@ for acao in papeis:
         return base    
     
     tratando_datas(base.Date)'''
-    
-    
+       
     
     #Caso queira escalonar
     #scaler = StandardScaler(with_mean = False)
