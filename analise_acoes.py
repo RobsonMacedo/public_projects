@@ -147,8 +147,15 @@ for acao in papeis:
     
     acerta_base(base)
     
-    # Adicionando coluna das previsoes
-    base['variacao'] = base.Open-base.Close
+    # Criando a variação
+     def cria_variacao():
+        for i in range(0, 1):
+            lista = []
+            lista.append(0)
+        for i in range(1, len(base.Close)):
+            lista.append(((base.iloc[i, 4] - base.iloc[i-1, 4])/base.iloc[i, 4])*100)
+        base['variacao'] = lista
+    cria_variacao() 
     
     
     def cria_situacao():
